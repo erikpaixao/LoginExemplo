@@ -2,31 +2,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<c:set var="description" value="${pageContext.request.contextPath}" />
+<c:set var="author" value="${pageContext.request.contextPath}" />
+<c:set var="title" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
+<meta name="description" content="${description}">
+<meta name="author" content="${author}">
 
-<title>Usuários</title>
+<title>${usuarios[0].username}</title>
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 	<div class="container">
-
+	<%@ include file="../fragments/menu.jsp" %>
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
@@ -38,11 +35,12 @@
 				<tr>
 					<td>${usuario.id}</td>
 					<td>${usuario.username}</td>
-					<td>${usuario.password}</td><td>
-					<c:forEach items="${usuario.roles}" var="role">
-						<ul><li>${role.name}</li></ul>
-					</c:forEach>
-					</td>
+					<td>${usuario.password}</td>
+					<td><c:forEach items="${usuario.roles}" var="role">
+							<ul>
+								<li>${role.name}</li>
+							</ul>
+						</c:forEach></td>
 				</tr>
 			</c:forEach>
 		</table>
