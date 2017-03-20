@@ -1,4 +1,4 @@
-package com.hellokoding.auth.model;
+package br.e3ti.model;
 
 import javax.persistence.*;
 import java.util.Set;
