@@ -1,2 +1,2 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* br.e3ti.WebApplication
+web: java $JAVA_OPTS -cp target/classes:target/*.war
 
