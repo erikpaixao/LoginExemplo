@@ -22,8 +22,8 @@
 	rel="stylesheet">
 </head>
 <body>
+<%@ include file="../fragments/header.jsp"%>
 	<div class="container">
-		<%@ include file="../fragments/header.jsp"%>
 		<div class="header">
 			<div class="row">
 				<div class="col-md-2">
@@ -49,16 +49,22 @@
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
-				<th>Usuário</th>
-				<th>Senha</th>
+				<th>Foto</th>
+				<th>Nome</th>
+				<th>Usuario</th>
+				<th>E-Mail</th>
+				<th>Tlefone</th>
 				<th>Permissões</th>
 				<th>Opções</th>
 			</tr>
 			<c:forEach items="${usuarios}" var="usuario">
 				<tr>
 					<td>${usuario.id}</td>
+					<td><figure><img src="${usuario.avatar}" /></figure></td>
+					<td>${usuario.name}</td>
 					<td>${usuario.username}</td>
-					<td>${usuario.password}</td>
+					<td>${usuario.email}</td>
+					<td>${usuario.phone}</td>
 					<td><c:forEach items="${usuario.roles}" var="role">
 							<ul>
 								<li>${role.name}</li>
@@ -70,10 +76,10 @@
 			</c:forEach>
 		</table>
 
-		</div>
-		<!-- /container -->
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+	</div>
+	<!-- /container -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>
