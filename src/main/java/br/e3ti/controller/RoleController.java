@@ -1,4 +1,4 @@
-package br.e3ti.web;
+package br.e3ti.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

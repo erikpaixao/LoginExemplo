@@ -23,13 +23,36 @@
 </head>
 <body>
 	<div class="container">
-	<%@ include file="../fragments/menu.jsp" %>
+		<%@ include file="../fragments/header.jsp"%>
+		<div class="header">
+			<div class="row">
+				<div class="col-md-2">
+					<figure>
+						<img alt="" src="${usuarioLogado.avatar}">
+					</figure>
+				</div>
+				<div class="col-md-10">
+					<div class="row">
+						<div class="col-md-6">
+							<div>${usuarioLogado.name}</div>
+							<div>${usuarioLogado.email}</div>
+						</div>
+						<div class="col-md-6">
+							<div>${usuarioLogado.phone}</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
-				<th>Username</th>
-				<th>Password</th>
-				<th>Roles</th>
+				<th>Usuário</th>
+				<th>Senha</th>
+				<th>Permissões</th>
+				<th>Opções</th>
 			</tr>
 			<c:forEach items="${usuarios}" var="usuario">
 				<tr>
@@ -41,14 +64,16 @@
 								<li>${role.name}</li>
 							</ul>
 						</c:forEach></td>
+					<td><a href="usuario/editar">Editar</a> <a
+						href="usuario/excluir?id=${usuario.id}">Excluir</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 
-	</div>
-	<!-- /container -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+		</div>
+		<!-- /container -->
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -6,4 +6,5 @@ import br.e3ti.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
+    User findById(Long id);
 }
