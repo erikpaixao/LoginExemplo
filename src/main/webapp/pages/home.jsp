@@ -11,34 +11,32 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Create an account</title>
+<title>Sistema de Controle de Ponto | Bem-vindo</title>
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 	<%@ include file="../fragments/header.jsp"%>
 	<div class="container">
-		<c:if test="${pageContext.request.userPrincipal.name != null}">
-			<form id="logoutForm" method="POST" action="${contextPath}/logout">
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
-			</form>
-			<h2>
-				Bem-vindo ${pageContext.request.userPrincipal.name} | <a
-					onclick="document.forms['logoutForm'].submit()">Logout</a>
-			</h2>
-		</c:if>
+	<h1>Bem-vindo, ${usuarioLogado.name}</h1>
+	<div class="row">
+	<div class="col-md-2">
+	
 	</div>
-	<!-- /container -->
+	<div class="col-md-5">
+	
+	</div>
+	<div class="col-md-5">
+	<div id="piechart" style="width: 100%;"></div>
+	</div>
+	</div>
+		
+	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script src="${contextPath}/resources/js/source.js"></script>
 </body>
 </html>

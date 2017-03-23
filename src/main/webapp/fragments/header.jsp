@@ -4,7 +4,7 @@
 		value="${_csrf.token}" />
 </form>
 <nav class="navbar navbar-default">
-	<div class="container-fluid">
+	<div class="container-fluid container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -14,7 +14,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="${contextPath}">Brand</a>
+			<a class="navbar-brand" href="/">Sistema de Controle de Ponto</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
