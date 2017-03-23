@@ -1,4 +1,3 @@
-
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <form id="logoutForm" method="POST" action="${contextPath}/logout">
 	<input type="hidden" name="${_csrf.parameterName}"
@@ -28,17 +27,18 @@
 					aria-expanded="false">${pageContext.request.userPrincipal.name}<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#" data-toggle="modal" data-target="#editarUsuarioLogado">Editar Perfil</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#" data-toggle="modal" data-target="#novoUsuario">Novo
-						Usuário...</a></li>
-				<li><a href="#">Nova Regra</a></li>
-				
-				<li><a href="#">Configurações</a></li>
-				<li role="separator" class="divider"></li>
-				<li><a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a></li>
-			</ul>
-			</li>
+						<li><a href="#" data-toggle="modal"
+							data-target="#editarUsuarioLogado">Editar Perfil</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#" data-toggle="modal"
+							data-target="#novoUsuario">Novo Usuário...</a></li>
+						<li><a href="#">Nova Regra</a></li>
+
+						<li><a href="#">Configurações</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#"
+							onclick="document.forms['logoutForm'].submit()">Logout</a></li>
+					</ul></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -63,16 +63,16 @@
 					<form id="formUsurLogado" action="/usuario/editar" method="POST"
 						class="form-signin">
 						<span>${message}</span> <input name="username" type="text"
-							value="${usuarioLogado.username}" class="form-control"
+							value="${usuarioLogado.username}" class="form-control form-group"
 							placeholder="Login" autofocus="true" disabled /> <input
 							name="name" type="text" value="${usuarioLogado.name}"
-							class="form-control" placeholder="Nome de Usuário"
+							class="form-control form-group" placeholder="Nome de Usuário"
 							autofocus="true" /> <input name="email" type="text"
-							value="${usuarioLogado.email}" class="form-control"
+							value="${usuarioLogado.email}" class="form-control form-group"
 							placeholder="E-mail" autofocus="true" /> <input name="phone"
-							type="text" value="${usuarioLogado.phone}" class="form-control"
+							type="text" value="${usuarioLogado.phone}" class="form-control form-group"
 							placeholder="Telefone" autofocus="true" /> <input name="avatar"
-							type="text" value="${usuarioLogado.avatar}" class="form-control"
+							type="text" value="${usuarioLogado.avatar}" class="form-control form-group"
 							placeholder="Avatar" autofocus="true" /> <span>${error}</span> <input
 							type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" /> <input type="hidden" name="password"
@@ -108,18 +108,20 @@
 					<form id="formUsurLogado" action="/usuario/editar" method="POST"
 						class="form-signin">
 						<span>${message}</span> <input name="username" type="text"
-							class="form-control" placeholder="Login" autofocus="true" /> <input
-							name="name" type="text" class="form-control"
+							class="form-control form-group" placeholder="Login" autofocus="true" /> <input
+							name="name" type="text" class="form-control form-group"
 							placeholder="Nome de Usuário" autofocus="true" /> <input
-							name="email" type="text" class="form-control"
+							name="email" type="text" class="form-control form-group"
 							placeholder="E-mail" autofocus="true" /> <input name="phone"
-							type="text" class="form-control" placeholder="Telefone"
+							type="text" class="form-control form-group" placeholder="Telefone"
 							autofocus="true" /> <input name="avatar" type="text"
-							class="form-control" placeholder="Avatar" autofocus="true" /> <span>${error}</span>
+							class="form-control form-group" placeholder="Avatar" autofocus="true" /> <span>${error}</span>
+						<input type="password" class="form-control form-group" name="password"
+							placeholder="Senha" /> <input type="password"
+							class="form-control form-group" name="passwordConfirm"
+							placeholder="Confirme a senha" /><input type="hidden" name="id" />
 						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" /> <input type="password" name="password" />
-						<input type="password" name="passwordConfirm" /><input
-							type="hidden" name="id" />
+							value="${_csrf.token}" />
 
 						<div class="modal-footer">
 							<button class="btn btn-default" data-dismiss="modal">Fechar</button>
