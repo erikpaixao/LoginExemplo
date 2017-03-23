@@ -12,7 +12,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="${description}">
 <meta name="author" content="${author}">
 
@@ -42,9 +41,7 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
-
 		</div>
 		<table class="table table-striped">
 			<tr>
@@ -65,7 +62,8 @@
 							<img src="${usuario.avatar}" />
 						</figure>
 					</td>
-					<td onmouseover="this.style.cursor='pointer'" onclick="window.location ='/usuario/${usuario.id}'">${usuario.name}</td>
+					<td onmouseover="this.style.cursor='pointer'"
+						onclick="window.location ='/usuario/${usuario.id}'">${usuario.name}</td>
 					<td>${usuario.username}</td>
 					<td>${usuario.email}</td>
 					<td>${usuario.phone}</td>
@@ -78,10 +76,8 @@
 				</tr>
 			</c:forEach>
 		</table>
-
 	</div>
 	<!-- /container -->
-
 	<%@ include file="../fragments/modal.jsp"%>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

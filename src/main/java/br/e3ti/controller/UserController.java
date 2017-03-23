@@ -35,8 +35,7 @@ public class UserController {
 	public String listaUsuarios(Model model, Principal principal){
 		
 		model.addAttribute("usuarios", userRepository.findAll());
-		model.addAttribute("usuarioLogado", userRepository.findByUsername(principal.getName()));
-		
+		//model.addAttribute("usuarioLogado", userRepository.findByUsername(principal.getName()));
 		return "pages/usuario";
 	}
 	
@@ -60,7 +59,6 @@ public class UserController {
 	@RequestMapping("{id}")
 	public String retornaUsuarioPorId(Model model, @PathVariable(value="id") Long id){
 		model.addAttribute("usuario", userRepository.findById(id));
-		System.out.println(id);
 		return "pages/editar";
 	}
 

@@ -22,26 +22,23 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="/usuario" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">Usuarios <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#" data-toggle="modal"
-							data-target="#novoUsuario">Novo Usuário...</a></li>
-						<li><a href="#">Nova Regra</a></li>
-					</ul></li>
+				<li><a href="/usuario" aria-expanded="false">Usuarios</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">${pageContext.request.userPrincipal.name}<span
 						class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#" data-toggle="modal"
-							data-target="#editarUsuarioLogado">Editar</a></li>
-						<li><a href="#">Configurações</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#"
-							onclick="document.forms['logoutForm'].submit()">Logout</a></li>
-					</ul></li>
+						<li><a href="#" data-toggle="modal" data-target="#editarUsuarioLogado">Editar Perfil</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#" data-toggle="modal" data-target="#novoUsuario">Novo
+						Usuário...</a></li>
+				<li><a href="#">Nova Regra</a></li>
+				
+				<li><a href="#">Configurações</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="#" onclick="document.forms['logoutForm'].submit()">Logout</a></li>
+			</ul>
+			</li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -111,22 +108,18 @@
 					<form id="formUsurLogado" action="/usuario/editar" method="POST"
 						class="form-signin">
 						<span>${message}</span> <input name="username" type="text"
-						 class="form-control"
-							placeholder="Login" autofocus="true" /> <input
-							name="name" type="text" 
-							class="form-control" placeholder="Nome de Usuário"
-							autofocus="true" /> <input name="email" type="text"
-							 class="form-control"
+							class="form-control" placeholder="Login" autofocus="true" /> <input
+							name="name" type="text" class="form-control"
+							placeholder="Nome de Usuário" autofocus="true" /> <input
+							name="email" type="text" class="form-control"
 							placeholder="E-mail" autofocus="true" /> <input name="phone"
-							type="text"  class="form-control"
-							placeholder="Telefone" autofocus="true" /> <input name="avatar"
-							type="text"  class="form-control"
-							placeholder="Avatar" autofocus="true" /> <span>${error}</span> <input
-							type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" /> <input type="password" name="password"
-							 /> <input type="password" name="passwordConfirm"
-							 /><input type="hidden"
-							name="id" /> 
+							type="text" class="form-control" placeholder="Telefone"
+							autofocus="true" /> <input name="avatar" type="text"
+							class="form-control" placeholder="Avatar" autofocus="true" /> <span>${error}</span>
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" /> <input type="password" name="password" />
+						<input type="password" name="passwordConfirm" /><input
+							type="hidden" name="id" />
 
 						<div class="modal-footer">
 							<button class="btn btn-default" data-dismiss="modal">Fechar</button>
