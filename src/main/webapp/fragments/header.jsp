@@ -22,16 +22,13 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/usuario">Usuarios</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
+				<li class="dropdown"><a href="/usuario" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Usuarios <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Novo...</a></li>
+						<li><a href="#" data-toggle="modal"
+							data-target="#novoUsuario">Novo Usuário...</a></li>
 						<li><a href="#">Nova Regra</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a href="#">Separated link</a></li>
 					</ul></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -39,7 +36,7 @@
 						class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#" data-toggle="modal"
-							data-target="#editarUsuario">Editar</a></li>
+							data-target="#editarUsuarioLogado">Editar</a></li>
 						<li><a href="#">Configurações</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="#"
@@ -52,44 +49,92 @@
 	<!-- /.container-fluid -->
 </nav>
 <!-- Modal -->
-<div class="modal fade" id="editarUsuario" tabindex="-1" role="dialog"
+<div class="modal fade" id="editarUsuarioLogado" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Editando
+					${usuarioLogado.name}</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<form id="formUsurLogado" action="/usuario/editar" method="POST"
+						class="form-signin">
+						<span>${message}</span> <input name="username" type="text"
+							value="${usuarioLogado.username}" class="form-control"
+							placeholder="Login" autofocus="true" disabled /> <input
+							name="name" type="text" value="${usuarioLogado.name}"
+							class="form-control" placeholder="Nome de Usuário"
+							autofocus="true" /> <input name="email" type="text"
+							value="${usuarioLogado.email}" class="form-control"
+							placeholder="E-mail" autofocus="true" /> <input name="phone"
+							type="text" value="${usuarioLogado.phone}" class="form-control"
+							placeholder="Telefone" autofocus="true" /> <input name="avatar"
+							type="text" value="${usuarioLogado.avatar}" class="form-control"
+							placeholder="Avatar" autofocus="true" /> <span>${error}</span> <input
+							type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" /> <input type="hidden" name="password"
+							value="${usuarioLogado.password}" /> <input type="hidden"
+							name="id" value="${usuarioLogado.id}" /> <input type="hidden"
+							name="username" value="${usuarioLogado.username}" />
+
+						<div class="modal-footer">
+							<button class="btn btn-default" data-dismiss="modal">Fechar</button>
+							<input type="submit" class="btn btn-primary" />
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="novoUsuario" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="myModalLabel">Editando
-						${usuarioLogado.name}</h4>
-				</div>
-				<div class="modal-body">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Novo Usuário</h4>
+			</div>
+			<div class="modal-body">
 				<div class="form-group">
-			<form id="formUsurLogado" action="usuario/editar" method="POST" class="form-signin">
-				<span>${message}</span> <input name="username" type="text"
-					value="${usuarioLogado.username}" class="form-control"
-					placeholder="Login" autofocus="true" disabled/> <input name="name"
-					type="text" value="${usuarioLogado.name}" class="form-control"
-					placeholder="Nome de Usuário" autofocus="true" /> <input
-					name="email" type="text" value="${usuarioLogado.email}"
-					class="form-control" placeholder="E-mail" autofocus="true" /> <input
-					name="phone" type="text" value="${usuarioLogado.phone}"
-					class="form-control" placeholder="Telefone" autofocus="true" /> <input
-					name="avatar" type="text" value="${usuarioLogado.avatar}"
-					class="form-control" placeholder="Avatar" autofocus="true" /> <span>${error}</span>
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<input type="hidden" name="password" value="${usuarioLogado.password}" />
-				<input type="hidden" name="id" value="${usuarioLogado.id}" />
-				<input type="hidden" name="username" value="${usuarioLogado.username}" />
+					<form id="formUsurLogado" action="/usuario/editar" method="POST"
+						class="form-signin">
+						<span>${message}</span> <input name="username" type="text"
+						 class="form-control"
+							placeholder="Login" autofocus="true" /> <input
+							name="name" type="text" 
+							class="form-control" placeholder="Nome de Usuário"
+							autofocus="true" /> <input name="email" type="text"
+							 class="form-control"
+							placeholder="E-mail" autofocus="true" /> <input name="phone"
+							type="text"  class="form-control"
+							placeholder="Telefone" autofocus="true" /> <input name="avatar"
+							type="text"  class="form-control"
+							placeholder="Avatar" autofocus="true" /> <span>${error}</span> <input
+							type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" /> <input type="password" name="password"
+							 /> <input type="password" name="passwordConfirm"
+							 /><input type="hidden"
+							name="id" /> 
 
-				<div class="modal-footer">
-				<button class="btn btn-default" data-dismiss="modal">Fechar</button>
-				<input type="submit" class="btn btn-primary"/>
+						<div class="modal-footer">
+							<button class="btn btn-default" data-dismiss="modal">Fechar</button>
+							<input type="submit" class="btn btn-primary" />
+						</div>
+					</form>
 				</div>
-			</form>
-			
+			</div>
 		</div>
-		</div>
-	</div></div>
+	</div>
 </div>

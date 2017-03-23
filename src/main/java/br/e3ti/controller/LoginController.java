@@ -43,7 +43,7 @@ public class LoginController {
 
         securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
 
-        return "redirect:/pages/home";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -52,7 +52,7 @@ public class LoginController {
             model.addAttribute("error", "Senha e/ou usuário inválidos");
 
         if (logout != null)
-            model.addAttribute("message", "Usuário logado com sucesso");
+            model.addAttribute("message", "Usuário deslogado com sucesso");
 
         return "login";
     }

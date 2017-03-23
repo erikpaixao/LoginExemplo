@@ -1,6 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="description" value="${pageContext.request.contextPath}" />
@@ -22,7 +22,6 @@
 	rel="stylesheet">
 </head>
 <body>
-	<%@ include file="../fragments/header.jsp"%>
 	<div class="container">
 		<div class="header">
 			<div class="row">
@@ -57,7 +56,6 @@
 				<th>Permissões</th>
 				<th>Opções</th>
 			</tr>
-			<c:forEach items="${usuarios}" var="usuario" varStatus="f">
 				<tr>
 					<td>${usuario.id}</td>
 					<td>
@@ -65,7 +63,7 @@
 							<img src="${usuario.avatar}" />
 						</figure>
 					</td>
-					<td onmouseover="this.style.cursor='pointer'" onclick="window.location ='/usuario/${usuario.id}'">${usuario.name}</td>
+					<td>${usuario.name}</td>
 					<td>${usuario.username}</td>
 					<td>${usuario.email}</td>
 					<td>${usuario.phone}</td>
@@ -74,15 +72,16 @@
 								<li>${role.name}</li>
 							</ul>
 						</c:forEach></td>
-					<td><a href="#" onclick="excluirUsuario(${usuario.id});">Excluir</a></td>
+					<td><a href="#" data-toggle="modal"
+							data-target="#editarUsuario" >Editar</a> <a
+						href="#" onclick="excluirUsuario(${usuario.id});">Excluir</a></td>
 				</tr>
-			</c:forEach>
 		</table>
 
 	</div>
 	<!-- /container -->
 
-	<%@ include file="../fragments/modal.jsp"%>
+<%@ include file="../fragments/modal.jsp"%>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
