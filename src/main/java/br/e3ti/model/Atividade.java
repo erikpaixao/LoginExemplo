@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Atividade {
@@ -17,10 +18,20 @@ public class Atividade {
 	private Calendar dataCriacao;
 	private Calendar prazoFinal;
 	private Boolean isRealizado;
+	@ManyToOne
+	private User usuario;
 	@Enumerated
 	private TipoAtividade tipoAtividade;
 	
 	public Atividade() {}
+	
+	public User getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(User usuario) {
+		this.usuario = usuario;
+	}
 
 	public Long getId() {
 		return id;
