@@ -33,9 +33,7 @@ public class UserController {
 	
 	@RequestMapping
 	public String listaUsuarios(Model model, Principal principal){
-		
 		model.addAttribute("usuarios", userRepository.findAll());
-		//model.addAttribute("usuarioLogado", userRepository.findByUsername(principal.getName()));
 		return "pages/usuario";
 	}
 	

@@ -38,7 +38,8 @@
 						<li role="separator" class="divider"></li>
 						<li><a href="#"
 							onclick="document.forms['logoutForm'].submit()">Logout</a></li>
-					</ul></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -70,22 +71,21 @@
 							autofocus="true" /> <input name="email" type="text"
 							value="${usuarioLogado.email}" class="form-control form-group"
 							placeholder="E-mail" autofocus="true" /> <input name="phone"
-							type="text" value="${usuarioLogado.phone}" class="form-control form-group"
-							placeholder="Telefone" autofocus="true" /> <input name="avatar"
-							type="text" value="${usuarioLogado.avatar}" class="form-control form-group"
+							type="text" value="${usuarioLogado.phone}"
+							class="form-control form-group" placeholder="Telefone"
+							autofocus="true" /> <input name="avatar" type="text"
+							value="${usuarioLogado.avatar}" class="form-control form-group"
 							placeholder="Avatar" autofocus="true" /> <span>${error}</span> <input
 							type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" /> <input type="hidden" name="password"
 							value="${usuarioLogado.password}" /> <input type="hidden"
 							name="id" value="${usuarioLogado.id}" /> <input type="hidden"
 							name="username" value="${usuarioLogado.username}" />
-
 						<div class="modal-footer">
 							<button class="btn btn-default" data-dismiss="modal">Fechar</button>
 							<input type="submit" class="btn btn-primary" />
 						</div>
 					</form>
-
 				</div>
 			</div>
 		</div>
@@ -108,21 +108,22 @@
 					<form id="formUsurLogado" action="/usuario/editar" method="POST"
 						class="form-signin">
 						<span>${message}</span> <input name="username" type="text"
-							class="form-control form-group" placeholder="Login" autofocus="true" /> <input
-							name="name" type="text" class="form-control form-group"
-							placeholder="Nome de Usuário" autofocus="true" /> <input
-							name="email" type="text" class="form-control form-group"
-							placeholder="E-mail" autofocus="true" /> <input name="phone"
-							type="text" class="form-control form-group" placeholder="Telefone"
+							class="form-control form-group" placeholder="Login"
+							autofocus="true" /> <input name="name" type="text"
+							class="form-control form-group" placeholder="Nome de Usuário"
+							autofocus="true" /> <input name="email" type="text"
+							class="form-control form-group" placeholder="E-mail"
+							autofocus="true" /> <input name="phone" type="text"
+							class="form-control form-group" placeholder="Telefone"
 							autofocus="true" /> <input name="avatar" type="text"
-							class="form-control form-group" placeholder="Avatar" autofocus="true" /> <span>${error}</span>
-						<input type="password" class="form-control form-group" name="password"
+							class="form-control form-group" placeholder="Avatar"
+							autofocus="true" /> <span>${error}</span> <input type="password"
+							class="form-control form-group" name="password"
 							placeholder="Senha" /> <input type="password"
 							class="form-control form-group" name="passwordConfirm"
 							placeholder="Confirme a senha" /><input type="hidden" name="id" />
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
-
 						<div class="modal-footer">
 							<button class="btn btn-default" data-dismiss="modal">Fechar</button>
 							<input type="submit" class="btn btn-primary" />

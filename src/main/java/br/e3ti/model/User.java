@@ -8,12 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,6 +38,8 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
+	@OneToMany
+	private List<Atividade> atividadesDoMes;
 
 	public Long getId() {
 		return id;
@@ -108,4 +112,13 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+	public List<Atividade> getAtividadesDoMes() {
+		return atividadesDoMes;
+	}
+
+	public void setAtividadesDoMes(List<Atividade> atividadesDoMes) {
+		this.atividadesDoMes = atividadesDoMes;
+	}
+
 }

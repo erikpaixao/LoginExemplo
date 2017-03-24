@@ -19,7 +19,7 @@
 <body>
 	<%@ include file="../fragments/header.jsp"%>
 	<div class="container">
-	<h1>Bem-vindo, ${usuarioLogado.name}</h1>
+	<h1>Bem-vindo, ${(usuarioLogado.name == null) ? usuarioLogado.username : usuarioLogado.name}</h1>
 	<div class="row">
 	<div class="col-md-2">
 	
