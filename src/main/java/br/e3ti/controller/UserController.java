@@ -34,7 +34,7 @@ public class UserController {
 	@RequestMapping
 	public String listaUsuarios(Model model, Principal principal){
 		model.addAttribute("usuarios", userRepository.findAll());
-		return "pages/usuario";
+		return "pages/usuario/usuario";
 	}
 	
 	@RequestMapping(value={"salvar","editar"}, method=RequestMethod.POST)
@@ -57,7 +57,7 @@ public class UserController {
 	@RequestMapping("{id}")
 	public String retornaUsuarioPorId(Model model, @PathVariable(value="id") Long id){
 		model.addAttribute("usuario", userRepository.findById(id));
-		return "pages/editar";
+		return "pages/usuario/editar";
 	}
 
 }

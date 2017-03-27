@@ -21,7 +21,7 @@
 	rel="stylesheet">
 </head>
 <body>
-	<%@ include file="../fragments/header.jsp"%>
+	<%@ include file="../../fragments/header.jsp"%>
 	<div class="container">
 		<div class="header">
 			<div class="row">
@@ -78,7 +78,7 @@
 		</table>
 	</div>
 	<!-- /container -->
-	<%@ include file="../fragments/modal.jsp"%>
+	<%@ include file="../../fragments/modal.jsp"%>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>

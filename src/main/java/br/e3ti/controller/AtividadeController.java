@@ -21,7 +21,7 @@ public class AtividadeController {
 	@RequestMapping
 	public String listarTodas(Model model){
 		model.addAttribute("atividades", atividadeRepository.findAll());
-		return "pages/atividade";
+		return "pages/atividade/atividade";
 	}
 	
 	@RequestMapping(value={"salvar","editar"}, method=RequestMethod.POST)

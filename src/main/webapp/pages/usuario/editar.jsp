@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="description" value="${pageContext.request.contextPath}" />
@@ -13,6 +12,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="${description}">
 <meta name="author" content="${author}">
 
@@ -22,7 +22,7 @@
 	rel="stylesheet">
 </head>
 <body>
-	<%@ include file="../fragments/header.jsp"%>
+	<%@ include file="../../fragments/header.jsp"%>
 	<div class="container">
 		<div class="header">
 			<div class="row">
@@ -42,34 +42,47 @@
 						</div>
 					</div>
 				</div>
+
 			</div>
+
 		</div>
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
-				<th>Tipo</th>
-				<th>Descrição</th>
-				<th>Criação</th>
-				<th>Prazo Final</th>
-				<th>Delegado</th>
+				<th>Foto</th>
+				<th>Nome</th>
+				<th>Usuario</th>
+				<th>E-Mail</th>
+				<th>Telefone</th>
+				<th>Permissões</th>
 				<th>Opções</th>
 			</tr>
-			<c:forEach items="${atividades}" var="atividade" varStatus="f">
-				<tr>
-					<td>${atividade.id}</td>
-					<td onmouseover="this.style.cursor='pointer'"
-						onclick="window.location ='/usuario/${atividade.id}'">${atividade.tipoAtividade}</td>
-					<td>${atividade.descricao}</td>
-					<td><fmt:formatDate value="${atividade.dataCriacao}" pattern="dd/MM/yy" /></td>
-					<td><fmt:formatDate value="${atividade.prazoFinal}" pattern="dd/MM/yy" /></td>
-					<td>${atividade.usuario.name}</td>
-					<td><a href="#" onclick="excluirUsuario(${atividade.id});">Excluir</a></td>
-				</tr>
-			</c:forEach>
+			<tr>
+				<td>${usuario.id}</td>
+				<td>
+					<figure>
+						<img src="${usuario.avatar}" />
+					</figure>
+				</td>
+				<td>${usuario.name}</td>
+				<td>${usuario.username}</td>
+				<td>${usuario.email}</td>
+				<td>${usuario.phone}</td>
+				<td><c:forEach items="${usuario.roles}" var="role">
+						<ul>
+							<li>${role.name}</li>
+						</ul>
+					</c:forEach></td>
+				<td><a href="#" data-toggle="modal"
+					data-target="#editarUsuario">Editar</a> <a href="#"
+					onclick="excluirUsuario(${usuario.id});">Excluir</a></td>
+			</tr>
 		</table>
+
 	</div>
 	<!-- /container -->
-	<%@ include file="../fragments/modal.jsp"%>
+
+	<%@ include file="../../fragments/modal.jsp"%>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
