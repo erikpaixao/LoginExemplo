@@ -1,6 +1,6 @@
 package br.e3ti.model;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -10,21 +10,22 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Atividade {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String descricao;
-	private Calendar dataCriacao;
-	private Calendar prazoFinal;
+	private Date dataCriacao;
+	private Date prazoFinal;
 	private Boolean isRealizado;
 	@ManyToOne
 	private User usuario;
 	@Enumerated
 	private TipoAtividade tipoAtividade;
-	
-	public Atividade() {}
-	
+
+	public Atividade() {
+	}
+
 	public User getUsuario() {
 		return usuario;
 	}
@@ -49,19 +50,19 @@ public class Atividade {
 		this.descricao = descricao;
 	}
 
-	public Calendar getDataCriacao() {
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Calendar dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public Calendar getPrazoFinal() {
+	public Date getPrazoFinal() {
 		return prazoFinal;
 	}
 
-	public void setPrazoFinal(Calendar prazoFinal) {
+	public void setPrazoFinal(Date prazoFinal) {
 		this.prazoFinal = prazoFinal;
 	}
 
@@ -80,7 +81,5 @@ public class Atividade {
 	public void setTipoAtividade(TipoAtividade tipoAtividade) {
 		this.tipoAtividade = tipoAtividade;
 	}
-	
-	
-	
+
 }
