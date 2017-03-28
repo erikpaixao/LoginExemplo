@@ -23,6 +23,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="/usuario" aria-expanded="false">Usuarios</a></li>
 				<li><a href="/atividade" aria-expanded="false">Atividades</a></li>
+				<li><a href="regra" aria-expanded="false">Regras</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">${pageContext.request.userPrincipal.name}<span

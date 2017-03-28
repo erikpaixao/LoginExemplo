@@ -43,6 +43,7 @@
 				</div>
 			</div>
 		</div>
+		<button class="btn btn-lg btn-primary" type="submit">Novo Usuário</button>
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
