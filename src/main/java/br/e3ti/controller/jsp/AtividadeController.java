@@ -1,4 +1,4 @@
-package br.e3ti.controller;
+package br.e3ti.controller.jsp;
 
 import javax.validation.Valid;
 

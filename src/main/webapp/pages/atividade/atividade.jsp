@@ -20,6 +20,8 @@
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
+<link href="${contextPath}/resources/css/common.css"
+	rel="stylesheet">
 </head>
 <body>
 	<%@ include file="../../fragments/header.jsp"%>
@@ -44,7 +46,7 @@
 				</div>
 			</div>
 		</div>
-		<button class="btn btn-lg btn-primary" type="submit">Nova Atividade</button>
+		<button class="btn btn-default btn-sm" type="submit">Nova Atividade</button>
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
