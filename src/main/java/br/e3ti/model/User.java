@@ -41,6 +41,10 @@ public class User {
 	@OneToMany
 	private List<Atividade> atividadesDoMes;
 	private Boolean isAtivo;
+	
+	public User() {
+		this.isAtivo = true;
+	}
 
 	public Long getId() {
 		return id;
