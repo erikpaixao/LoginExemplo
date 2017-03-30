@@ -25,27 +25,8 @@
 <body>
 	<%@ include file="../../fragments/header.jsp"%>
 	<div class="container">
-		<div class="header">
-			<div class="row">
-				<div class="col-md-2">
-					<figure>
-						<img alt="" src="${usuarioLogado.avatar}">
-					</figure>
-				</div>
-				<div class="col-md-10">
-					<div class="row">
-						<div class="col-md-6">
-							<div>${usuarioLogado.name}</div>
-							<div>${usuarioLogado.email}</div>
-						</div>
-						<div class="col-md-6">
-							<div>${usuarioLogado.phone}</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<button class="btn btn-default btn-sm" type="submit">Novo
+		<button class="btn btn-default btn-sm" data-toggle="modal"
+							data-target="#novoUsuario" type="submit">Novo
 			Usuário</button>
 		<table class="table table-striped">
 			<tr>
@@ -59,8 +40,7 @@
 				<th>Opções</th>
 			</tr>
 			<c:forEach items="${usuarios}" var="usuario" varStatus="f">
-			<c:if test="${usuario.isAtivo}">
-				<tr>
+				<tr class="${(!usuario.isAtivo) ? ('disabled') : ('')}">
 					<td>${usuario.id}</td>
 					<td>
 						<figure>
@@ -77,9 +57,8 @@
 								<li>${role.name}</li>
 							</ul>
 						</c:forEach></td>
-					<td><a href="#" onclick="excluirUsuario(${usuario.id});">Excluir</a></td>
+					<td><a style="${(!usuario.isAtivo) ? ('display:none;') : ('')}" href="#" onclick="excluirUsuario(${usuario.id});">Excluir</a></td>
 				</tr>
-				</c:if>
 			</c:forEach>
 		</table>
 	</div>

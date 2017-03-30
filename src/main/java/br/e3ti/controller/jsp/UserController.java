@@ -27,9 +27,6 @@ public class UserController {
 	
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-    
-    @Autowired
-    private RoleRepository roleRepository;
 	
 	@RequestMapping
 	public String listaUsuarios(Model model, Principal principal){
@@ -42,7 +39,6 @@ public class UserController {
 		if(user.getId() == null){
 			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		}
-        user.setRoles(new HashSet<>(roleRepository.findAll()));
         userRepository.save(user);
 		return "redirect:/usuario";
 	}
