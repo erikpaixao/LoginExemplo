@@ -13,14 +13,14 @@ import br.e3ti.repository.UserRepository;
 @Controller
 @RequestMapping
 public class MainController {
-	
+
 	@Autowired
 	UserRepository userRepository;
+
+	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+	public String home(Model model, Principal principal) {
+		model.addAttribute("usuarioLogado", userRepository.findByUsername(principal.getName()));
+		return "pages/home";
+	}
 	
-	
-	 @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
-	    public String home(Model model, Principal principal) {
-		 model.addAttribute("usuarioLogado", userRepository.findByUsername(principal.getName()));
-	        return "pages/home";
-	    }
 }

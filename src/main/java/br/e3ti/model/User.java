@@ -40,6 +40,7 @@ public class User {
 	private Set<Role> roles;
 	@OneToMany
 	private List<Atividade> atividadesDoMes;
+	private Boolean isAtivo;
 
 	public Long getId() {
 		return id;
@@ -119,6 +120,14 @@ public class User {
 
 	public void setAtividadesDoMes(List<Atividade> atividadesDoMes) {
 		this.atividadesDoMes = atividadesDoMes;
+	}
+
+	public Boolean getIsAtivo() {
+		return isAtivo;
+	}
+
+	public void setIsAtivo(Boolean isAtivo) {
+		this.isAtivo = isAtivo;
 	}
 
 }

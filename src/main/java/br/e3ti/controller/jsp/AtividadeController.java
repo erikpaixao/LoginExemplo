@@ -1,5 +1,6 @@
 package br.e3ti.controller.jsp;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,13 @@ public class AtividadeController {
 	@RequestMapping(value={"salvar","editar"}, method=RequestMethod.POST)
 	public String salvar(@Valid Atividade atividade){	
 		atividadeRepository.save(atividade);
+		return "redirect:/atividade";
+	}
+	
+	@RequestMapping("excluir")
+	public String excluir(Atividade atividade, HttpServletResponse response){
+		atividadeRepository.delete(atividade.getId());
+		response.setStatus(200);
 		return "redirect:/atividade";
 	}
 	

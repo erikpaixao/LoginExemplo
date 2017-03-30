@@ -22,7 +22,7 @@ public class RoleController {
 	public RoleRepository roleRepository;
 	
 	@RequestMapping
-	public String listaregras(Model model, Principal principal){
+	public String listarRegras(Model model, Principal principal){
 		model.addAttribute("regras", roleRepository.findAll());
 		return "pages/regra/regra";
 	}

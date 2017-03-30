@@ -15,6 +15,7 @@ import br.e3ti.validator.UserValidator;
 
 @Controller
 public class LoginController {
+	
     @Autowired
     private UserService userService;
 

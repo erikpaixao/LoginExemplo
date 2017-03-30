@@ -49,7 +49,9 @@ public class UserController {
 	
 	@RequestMapping("excluir")
 	public String excluir(User user, HttpServletResponse response){
-		userRepository.delete(user.getId());
+		User userUtil = userRepository.findById(user.getId());
+		userUtil.setIsAtivo(false);
+		userRepository.save(userUtil);
 		response.setStatus(200);
 		return "redirect:/usuario";
 	}

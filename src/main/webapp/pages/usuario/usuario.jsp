@@ -59,6 +59,7 @@
 				<th>Opções</th>
 			</tr>
 			<c:forEach items="${usuarios}" var="usuario" varStatus="f">
+			<c:if test="${usuario.isAtivo}">
 				<tr>
 					<td>${usuario.id}</td>
 					<td>
@@ -78,6 +79,7 @@
 						</c:forEach></td>
 					<td><a href="#" onclick="excluirUsuario(${usuario.id});">Excluir</a></td>
 				</tr>
+				</c:if>
 			</c:forEach>
 		</table>
 	</div>
