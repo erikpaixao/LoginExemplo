@@ -7,6 +7,24 @@ function excluirUsuario(id){
 	}
 }
 
+function excluirAtividade(id){
+	if (confirm("Deseja realmente excluir?")){
+		$.get("/atividade/excluir?id=" + id, function(dadosDeResposta) {
+	        alert("Usuário excluído!");
+	        window.location.reload(false);
+		});
+	}
+}
+
+function excluirRegra(id){
+	if (confirm("Deseja realmente excluir?")){
+		$.get("/regra/excluir?id=" + id, function(dadosDeResposta) {
+	        alert("Usuário excluído!");
+	        window.location.reload(false);
+		});
+	}
+}
+
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
