@@ -7,7 +7,6 @@ ol, ul {
 }
 
 .form-signin {
-	max-width: 330px;
 	padding: 15px;
 	margin: 0 auto;
 }
@@ -28,15 +27,11 @@ ol, ul {
 	box-sizing: border-box;
 	padding: 10px;
 	font-size: 16px;
+	margin-bottom: 10px;
 }
 
 .form-signin .form-control:focus {
 	z-index: 2;
-}
-
-.form-signin input {
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
 }
 
 .form-signin button {
@@ -53,4 +48,11 @@ ol, ul {
 
 .btn, .btn-sm {
 	margin-bottom: 10px;
+}
+
+@media screen and (min-width: 998px) {
+	.centered {
+		margin-left: 27%;
+		margin-top: 15%
+	}
 }

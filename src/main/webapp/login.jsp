@@ -23,8 +23,8 @@
 <body>
 
 <div class="container">
-
-    <form method="POST" action="${contextPath}/login" class="form-signin">
+<div class=""></div>
+    <form method="POST" action="${contextPath}/login" class="form-signin col-md-5 centered">
         <h2 class="form-heading">Login</h2>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
