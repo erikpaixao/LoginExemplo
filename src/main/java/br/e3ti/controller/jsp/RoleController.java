@@ -24,26 +24,26 @@ public class RoleController {
 	@RequestMapping
 	public String listarRegras(Model model, Principal principal){
 		model.addAttribute("regras", roleRepository.findAll());
-		return "pages/regra/regra";
+		return "pages/regra/lista";
 	}
 	
 	@RequestMapping(value={"salvar","editar"}, method=RequestMethod.POST)
 	public String salvar( Role role){	
         roleRepository.save(role);
-		return "redirect:/regra";
+		return "redirect:/lista";
 	}
 	
 	@RequestMapping("excluir")
 	public String excluir(Role role, HttpServletResponse response){
 		roleRepository.delete(role.getId());
 		response.setStatus(200);
-		return "redirect:/regra";
+		return "redirect:/lista";
 	}
 	
 	@RequestMapping("{id}")
 	public String retornaregraPorId(Model model, @PathVariable(value="id") Long id){
 		model.addAttribute("regra", roleRepository.findById(id));
-		return "pages/regra/editar";
+		return "pages/regra/lista";
 	}
 
 }

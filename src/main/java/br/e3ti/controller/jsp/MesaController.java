@@ -24,26 +24,26 @@ public class MesaController {
 	@RequestMapping
 	public String listarRegras(Model model, Principal principal) {
 		model.addAttribute("mesas", mesaRepository.findAll());
-		return "pages/mesa/mesa";
+		return "pages/mesa/lista";
 	}
 
 	@RequestMapping(value = { "salvar", "editar" }, method = RequestMethod.POST)
 	public String salvar(Mesa mesa) {
 		mesaRepository.save(mesa);
-		return "redirect:/mesa";
+		return "redirect:/lista";
 	}
 
 	@RequestMapping("excluir")
 	public String excluir(Mesa mesa, HttpServletResponse response) {
 		mesaRepository.delete(mesa.getId());
 		response.setStatus(200);
-		return "redirect:/mesa";
+		return "redirect:/lista";
 	}
 
 	@RequestMapping("{id}")
 	public String retornaregraPorId(Model model, @PathVariable(value = "id") Long id) {
 		model.addAttribute("mesa", mesaRepository.findById(id));
-		return "pages/mesa/mesa";
+		return "pages/mesa/editar";
 	}
 
 }

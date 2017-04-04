@@ -24,26 +24,26 @@ public class ProdutoController {
 	@RequestMapping
 	public String listarRegras(Model model, Principal principal) {
 		model.addAttribute("produtos", produtoRepository.findAll());
-		return "pages/produto/produto";
+		return "pages/produto/lista";
 	}
 
 	@RequestMapping(value = { "salvar", "editar" }, method = RequestMethod.POST)
 	public String salvar(Produto produto) {
 		produtoRepository.save(produto);
-		return "redirect:/produto";
+		return "redirect:/lista";
 	}
 
 	@RequestMapping("excluir")
 	public String excluir(Produto produto, HttpServletResponse response) {
 		produtoRepository.delete(produto.getId());
 		response.setStatus(200);
-		return "redirect:/produto";
+		return "redirect:/lista";
 	}
 
 	@RequestMapping("{id}")
 	public String retornaregraPorId(Model model, @PathVariable(value = "id") Long id) {
 		model.addAttribute("produto", produtoRepository.findById(id));
-		return "pages/produto/produto";
+		return "pages/produto/editar";
 	}
 
 }

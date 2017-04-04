@@ -24,26 +24,26 @@ public class PedidoController {
 	@RequestMapping
 	public String listarRegras(Model model, Principal principal) {
 		model.addAttribute("pedidos", pedidoRepository.findAll());
-		return "pages/pedido/pedido";
+		return "pages/pedido/lista";
 	}
 
 	@RequestMapping(value = { "salvar", "editar" }, method = RequestMethod.POST)
 	public String salvar(Pedido pedido) {
 		pedidoRepository.save(pedido);
-		return "redirect:/pedido";
+		return "redirect:/lista";
 	}
 
 	@RequestMapping("excluir")
 	public String excluir(Pedido pedido, HttpServletResponse response) {
 		pedidoRepository.delete(pedido.getId());
 		response.setStatus(200);
-		return "redirect:/pedido";
+		return "redirect:/lista";
 	}
 
 	@RequestMapping("{id}")
 	public String retornaregraPorId(Model model, @PathVariable(value = "id") Long id) {
 		model.addAttribute("pedido", pedidoRepository.findById(id));
-		return "pages/pedido/pedido";
+		return "pages/pedido/editar";
 	}
 
 }

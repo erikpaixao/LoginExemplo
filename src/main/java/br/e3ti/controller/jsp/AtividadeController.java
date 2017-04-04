@@ -22,20 +22,20 @@ public class AtividadeController {
 	@RequestMapping
 	public String listarTodas(Model model){
 		model.addAttribute("atividades", atividadeRepository.findAll());
-		return "pages/atividade/atividade";
+		return "pages/atividade/lista";
 	}
 	
 	@RequestMapping(value={"salvar","editar"}, method=RequestMethod.POST)
 	public String salvar(@Valid Atividade atividade){	
 		atividadeRepository.save(atividade);
-		return "redirect:/atividade";
+		return "redirect:/lista";
 	}
 	
 	@RequestMapping("excluir")
 	public String excluir(Atividade atividade, HttpServletResponse response){
 		atividadeRepository.delete(atividade.getId());
 		response.setStatus(200);
-		return "redirect:/atividade";
+		return "redirect:/lista";
 	}
 	
 }

@@ -28,7 +28,7 @@ public class UserController {
 	@RequestMapping
 	public String listaUsuarios(Model model, Principal principal){
 		model.addAttribute("usuarios", userRepository.findAll());
-		return "pages/usuario/usuario";
+		return "pages/usuario/lista";
 	}
 	
 	@RequestMapping(value={"salvar","editar"}, method=RequestMethod.POST)
@@ -37,7 +37,7 @@ public class UserController {
 			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		}
         userRepository.save(user);
-		return "redirect:/usuario";
+		return "redirect:/lista";
 	}
 	
 	@RequestMapping("excluir")
@@ -46,7 +46,7 @@ public class UserController {
 		userUtil.setIsAtivo(false);
 		userRepository.save(userUtil);
 		response.setStatus(200);
-		return "redirect:/usuario";
+		return "redirect:/lista";
 	}
 	
 	@RequestMapping("{id}")
