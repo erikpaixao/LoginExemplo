@@ -37,16 +37,16 @@ public class UserController {
 			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		}
         userRepository.save(user);
-		return "redirect:/lista";
+		return "redirect:/usuario";
 	}
 	
-	@RequestMapping("excluir")
+	@RequestMapping("alterarStatus")
 	public String excluir(User user, HttpServletResponse response){
 		User userUtil = userRepository.findById(user.getId());
-		userUtil.setIsAtivo(false);
+		userUtil.setIsAtivo(!userUtil.getIsAtivo());
 		userRepository.save(userUtil);
 		response.setStatus(200);
-		return "redirect:/lista";
+		return "redirect:/usuario";
 	}
 	
 	@RequestMapping("{id}")

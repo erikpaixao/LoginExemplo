@@ -1,26 +1,8 @@
-function excluirUsuario(id){
-	if (confirm("Deseja realmente excluir?")){
-		$.get("/usuario/excluir?id=" + id, function(dadosDeResposta) {
-	        alert("Usuário excluído!");
-	        window.location.reload(false);
-		});
-	}
-}
-
-function excluirAtividade(id){
-	if (confirm("Deseja realmente excluir?")){
-		$.get("/atividade/excluir?id=" + id, function(dadosDeResposta) {
-	        alert("Usuário excluído!");
-	        window.location.reload(false);
-		});
-	}
-}
-
-function excluirRegra(id){
-	if (confirm("Deseja realmente excluir?")){
-		$.get("/regra/excluir?id=" + id, function(dadosDeResposta) {
-	        alert("Usuário excluído!");
-	        window.location.reload(false);
+function alterarStatus(id, redirect){
+	if (confirm("Deseja alterar Status?")){
+		$.get("/usuario/alterarStatus?id=" + id, function(dadosDeResposta) {
+	        alert("Operaçao realizada com sucesso!");
+	        window.location = "/" + redirect;
 		});
 	}
 }

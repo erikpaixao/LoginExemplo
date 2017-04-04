@@ -19,15 +19,13 @@
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="${contextPath}/resources/css/common.css"
-	rel="stylesheet">
+<link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 </head>
 <body>
 	<%@ include file="../../fragments/header.jsp"%>
 	<div class="container">
 		<button class="btn btn-default btn-sm" data-toggle="modal"
-							data-target="#novoUsuario" type="submit">Novo
-			Usuário</button>
+			data-target="#novoUsuario" type="submit">Novo Usuário</button>
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
@@ -37,7 +35,7 @@
 				<th>E-Mail</th>
 				<th>Telefone</th>
 				<th>Permissões</th>
-				<th>Opções</th>
+				<th>Ativo</th>
 			</tr>
 			<c:forEach items="${usuarios}" var="usuario" varStatus="f">
 				<tr class="${(!usuario.isAtivo) ? ('disabled') : ('')}">
@@ -57,13 +55,59 @@
 								<li>${role.name}</li>
 							</ul>
 						</c:forEach></td>
-					<td><a style="${(!usuario.isAtivo) ? ('display:none;') : ('')}" href="#" onclick="excluirUsuario(${usuario.id});">Excluir</a></td>
+					<td><a
+						style="${(!usuario.isAtivo) ? ('display:none;') : ('')}" href="#"
+						onclick="alterarStatus(${usuario.id}, 'usuario');">Desativar</a>
+						<a
+						style="${(usuario.isAtivo) ? ('display:none;') : ('')}" href="#"
+						onclick="alterarStatus(${usuario.id}, 'usuario');">Ativar</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
 	<!-- /container -->
-	<%@ include file="../../fragments/modal.jsp"%>
+	<div class="modal fade" id="novoUsuario" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Novo Usuário</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<form id="formUsurLogado" action="/usuario/editar" method="POST"
+						class="form-signin">
+						<span>${message}</span> <input name="username" type="text"
+							class="form-control form-group" placeholder="Login"
+							autofocus="true" /> <input name="name" type="text"
+							class="form-control form-group" placeholder="Nome de Usuário"
+							autofocus="true" /> <input name="email" type="text"
+							class="form-control form-group" placeholder="E-mail"
+							autofocus="true" /> <input name="phone" type="text"
+							class="form-control form-group" placeholder="Telefone"
+							autofocus="true" /> <input name="avatar" type="text"
+							class="form-control form-group" placeholder="Avatar"
+							autofocus="true" /> <span>${error}</span> <input type="password"
+							class="form-control form-group" name="password"
+							placeholder="Senha" /> <input type="password"
+							class="form-control form-group" name="passwordConfirm"
+							placeholder="Confirme a senha" /><input type="hidden" name="id" />
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+						<div class="modal-footer">
+							<button class="btn btn-default" data-dismiss="modal">Fechar</button>
+							<input type="submit" class="btn btn-primary" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>

@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="description" value="${pageContext.request.contextPath}" />
@@ -24,28 +25,8 @@
 <body>
 	<%@ include file="../../fragments/header.jsp"%>
 	<div class="container">
-		<div class="header">
-			<div class="row">
-				<div class="col-md-2">
-					<figure>
-						<img alt="" src="${usuarioLogado.avatar}">
-					</figure>
-				</div>
-				<div class="col-md-10">
-					<div class="row">
-						<div class="col-md-6">
-							<div>${usuarioLogado.name}</div>
-							<div>${usuarioLogado.email}</div>
-						</div>
-						<div class="col-md-6">
-							<div>${usuarioLogado.phone}</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
+		<button class="btn btn-default btn-sm" data-toggle="modal"
+			data-target="#novoUsuario" type="submit">Adicionar Atividade</button>
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
@@ -75,13 +56,82 @@
 					</c:forEach></td>
 				<td><a href="#" data-toggle="modal"
 					data-target="#editarUsuario">Editar</a> <a href="#"
-					onclick="excluirUsuario(${usuario.id});">Excluir</a></td>
+					onclick="excluir(${usuario.id}, 'usuario');">Excluir</a></td>
 			</tr>
 		</table>
-
+		<div class=header>
+			<h3>Atividades</h3>
+		</div>
+		<table class="table table-striped">
+			<tr>
+				<th>ID</th>
+				<th>Tipo</th>
+				<th>Descrição</th>
+				<th>Criação</th>
+				<th>Prazo Final</th>
+				<th>Delegado</th>
+				<th>Opções</th>
+			</tr>
+			<c:forEach items="${usuario.atividadesDoMes}" var="atividade"
+				varStatus="f">
+				<tr>
+					<td>${atividade.id}</td>
+					<td onmouseover="this.style.cursor='pointer'"
+						onclick="window.location ='/usuario/${atividade.id}'">${atividade.tipoAtividade}</td>
+					<td>${atividade.descricao}</td>
+					<td><fmt:formatDate value="${atividade.dataCriacao}"
+							pattern="dd/MM/yy" /></td>
+					<td><fmt:formatDate value="${atividade.prazoFinal}"
+							pattern="dd/MM/yy" /></td>
+					<td>${atividade.usuario.name}</td>
+					<td><a href="#" onclick="excluirUsuario(${atividade.id});">Excluir</a></td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 	<!-- /container -->
+	<div class="modal fade" id="editarUsuario" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<form id="formUsurLogado" action="editar" method="POST"
+							class="form-signin">
+							<span>${message}</span> <input name="username" type="text"
+								value="${usuario.username} ${i}" class="form-control"
+								placeholder="Login" autofocus="true" disabled /> <input
+								name="name" type="text" value="${usuario.name}"
+								class="form-control" placeholder="Nome de Usuário"
+								autofocus="true" /> <input name="email" type="text"
+								value="${usuario.email}" class="form-control"
+								placeholder="E-mail" autofocus="true" /> <input name="phone"
+								type="text" value="${usuario.phone}" class="form-control"
+								placeholder="Telefone" autofocus="true" /> <input name="avatar"
+								type="text" value="${usuario.avatar}" class="form-control"
+								placeholder="Avatar" autofocus="true" /> <span>${error}</span>
+							<input type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" /> <input type="hidden" name="password"
+								value="${usuario.password}" /> <input type="hidden" name="id"
+								value="${usuario.id}" /> <input type="hidden" name="username"
+								value="${usuario.username}" />
 
+							<div class="modal-footer">
+								<button class="btn btn-default" data-dismiss="modal">Fechar</button>
+								<input type="submit" class="btn btn-primary" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
