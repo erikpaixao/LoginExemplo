@@ -1,7 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="description" value="${pageContext.request.contextPath}" />
@@ -21,12 +21,14 @@
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
+<link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 </head>
 <body>
 	<%@ include file="../../fragments/header.jsp"%>
 	<div class="container">
 		<button class="btn btn-default btn-sm" data-toggle="modal"
-			data-target="#novoUsuario" type="submit">Adicionar Atividade</button>
+			data-target="#novaAtividade" type="submit">Adicionar
+			Atividade</button>
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
