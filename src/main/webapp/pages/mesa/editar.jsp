@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="description" value="${pageContext.request.contextPath}" />
@@ -13,6 +12,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="${description}">
 <meta name="author" content="${author}">
 
@@ -20,7 +20,6 @@
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="${contextPath}/resources/css/common.css" rel="stylesheet">
 </head>
 <body>
 	<%@ include file="../../fragments/header.jsp"%>
@@ -43,37 +42,46 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<button class="btn btn-default btn-sm" type="submit">Nova
-				Regra</button>
-		</div>
 
+			</div>
+
+		</div>
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
+				<th>Foto</th>
 				<th>Nome</th>
-				<th>Usuarios</th>
+				<th>Usuario</th>
+				<th>E-Mail</th>
+				<th>Telefone</th>
+				<th>Permissões</th>
 				<th>Opções</th>
 			</tr>
-			<c:forEach items="${regras}" var="regra" varStatus="f">
-				<tr>
-					<td>${regra.id}</td>
-					<td onmouseover="this.style.cursor='pointer'"
-						onclick="window.location ='/regra/${regra.id}'">${regra.name}</td>
-
-					<td><ul>
-							<c:forEach items="${regra.users}" var="usuarioRegra">
-								<c:if test="${usuarioRegra.isAtivo}">
-									<li>${usuarioRegra.username}</li>
-								</c:if>
-							</c:forEach>
-						</ul></td>
-					<td><a href="#" onclick="excluirUsuario(${regra.id});">Excluir</a></td>
-				</tr>
-			</c:forEach>
+			<tr>
+				<td>${role.id}</td>
+				<td>
+					<figure>
+						<img src="${usuario.avatar}" />
+					</figure>
+				</td>
+				<td>${role.name}</td>
+				<td>${role.username}</td>
+				<td>${role.email}</td>
+				<td>${role.phone}</td>
+				<td><c:forEach items="${usuario.roles}" var="role">
+						<ul>
+							<li>${role.name}</li>
+						</ul>
+					</c:forEach></td>
+				<td><a href="#" data-toggle="modal"
+					data-target="#editarUsuario">Editar</a> <a href="#"
+					onclick="excluirUsuario(${usuario.id});">Excluir</a></td>
+			</tr>
 		</table>
+
 	</div>
 	<!-- /container -->
+
 	<%@ include file="../../fragments/modal.jsp"%>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

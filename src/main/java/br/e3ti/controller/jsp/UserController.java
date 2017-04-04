@@ -1,8 +1,6 @@
 package br.e3ti.controller.jsp;
 
 import java.security.Principal;
-import java.util.HashSet;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.e3ti.model.User;
-import br.e3ti.repository.RoleRepository;
 import br.e3ti.repository.UserRepository;
 
 @Controller

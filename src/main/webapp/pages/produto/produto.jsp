@@ -1,7 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="description" value="${pageContext.request.contextPath}" />
@@ -20,7 +20,8 @@
 
 <link href="${contextPath}/resources/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+<link href="${contextPath}/resources/css/common.css"
+	rel="stylesheet">
 </head>
 <body>
 	<%@ include file="../../fragments/header.jsp"%>
@@ -44,31 +45,29 @@
 					</div>
 				</div>
 			</div>
-			<button class="btn btn-default btn-sm" type="submit">Nova
-				Regra</button>
+			<button class="btn btn-default btn-sm" type="submit">Nova Regra</button>
 		</div>
-
+		
 		<table class="table table-striped">
 			<tr>
 				<th>ID</th>
-				<th>Nome</th>
-				<th>Usuarios</th>
+				<th>Tipo</th>
+				<th>Descrição</th>
+				<th>Criação</th>
+				<th>Prazo Final</th>
+				<th>Delegado</th>
 				<th>Opções</th>
 			</tr>
-			<c:forEach items="${regras}" var="regra" varStatus="f">
+			<c:forEach items="${produtos}" var="produto" varStatus="f">
 				<tr>
-					<td>${regra.id}</td>
+					<td>${produto.id}</td>
 					<td onmouseover="this.style.cursor='pointer'"
-						onclick="window.location ='/regra/${regra.id}'">${regra.name}</td>
-
-					<td><ul>
-							<c:forEach items="${regra.users}" var="usuarioRegra">
-								<c:if test="${usuarioRegra.isAtivo}">
-									<li>${usuarioRegra.username}</li>
-								</c:if>
-							</c:forEach>
-						</ul></td>
-					<td><a href="#" onclick="excluirUsuario(${regra.id});">Excluir</a></td>
+						onclick="window.location ='/usuario/${produto.id}'">${produto.tipoproduto}</td>
+					<td>${produto.descricao}</td>
+					<td><fmt:formatDate value="${produto.dataCriacao}" pattern="dd/MM/yy" /></td>
+					<td><fmt:formatDate value="${produto.prazoFinal}" pattern="dd/MM/yy" /></td>
+					<td>${produto.usuario.name}</td>
+					<td><a href="#" onclick="excluirUsuario(${produto.id});">Excluir</a></td>
 				</tr>
 			</c:forEach>
 		</table>

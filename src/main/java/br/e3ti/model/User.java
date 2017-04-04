@@ -15,7 +15,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
