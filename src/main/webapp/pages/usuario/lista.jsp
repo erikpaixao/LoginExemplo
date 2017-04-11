@@ -91,7 +91,11 @@
 							class="form-control form-group" placeholder="Telefone"
 							autofocus="true" /> <input name="avatar" type="text"
 							class="form-control form-group" placeholder="Avatar"
-							autofocus="true" /> <span>${error}</span> <input type="password"
+							autofocus="true" />
+							<c:forEach items="${roles}" var="role">
+								<input type="checkbox" name="roles" value="${role.id}">${role.name}</input>
+							</c:forEach>
+							<span>${error}</span> <input type="password"
 							class="form-control form-group" name="password"
 							placeholder="Senha" /> <input type="password"
 							class="form-control form-group" name="passwordConfirm"

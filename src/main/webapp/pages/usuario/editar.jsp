@@ -27,7 +27,7 @@
 	<%@ include file="../../fragments/header.jsp"%>
 	<div class="container">
 		<button class="btn btn-default btn-sm" data-toggle="modal"
-			data-target="#novaAtividade" type="submit">Adicionar
+			data-target="#adicionarAtividade" type="submit">Adicionar
 			Atividade</button>
 		<table class="table table-striped">
 			<tr>
@@ -108,16 +108,22 @@
 							class="form-signin">
 							<span>${message}</span> <input name="username" type="text"
 								value="${usuario.username} ${i}" class="form-control"
-								placeholder="Login" autofocus="true" disabled /> <input
+								placeholder="Login" autofocus="true" /> <input
 								name="name" type="text" value="${usuario.name}"
 								class="form-control" placeholder="Nome de Usuário"
 								autofocus="true" /> <input name="email" type="text"
 								value="${usuario.email}" class="form-control"
 								placeholder="E-mail" autofocus="true" /> <input name="phone"
 								type="text" value="${usuario.phone}" class="form-control"
-								placeholder="Telefone" autofocus="true" /> <input name="avatar"
-								type="text" value="${usuario.avatar}" class="form-control"
-								placeholder="Avatar" autofocus="true" /> <span>${error}</span>
+								placeholder="Telefone" autofocus="true" />
+							<c:forEach items="${usuario.roles}" var="role2">
+								<c:forEach items="${roles}" var="role">
+									<input type="checkbox" name="roles" value="${role.id}"
+										${role.id == role2.id ? "checked" : " " }>${role.name}</input>
+								</c:forEach>
+							</c:forEach>
+							<input name="avatar" type="text" value="${usuario.avatar}"
+								class="form-control" placeholder="Avatar" autofocus="true" /> <span>${error}</span>
 							<input type="hidden" name="${_csrf.parameterName}"
 								value="${_csrf.token}" /> <input type="hidden" name="password"
 								value="${usuario.password}" /> <input type="hidden" name="id"
@@ -134,6 +140,44 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="adicionarAtividade" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<form id="formUsurLogado" action="/atividade/editar" method="POST"
+							class="form-signin">
+							<span>${message}</span> <input name="descricao" type="text"
+								value="" class="form-control" placeholder="Descrição"
+								autofocus="true" /> <input name="dataCriacao"
+								type="text" class="form-control" placeholder="Data de Criação"
+								autofocus="true" /> <input name="prazoFinal" id="" type="text"
+								class="form-control" placeholder="Data de Finalização"
+								autofocus="true" /> <input name="isRealizado" type="checkbox"
+								class="form-control" autofocus="true" /> <input type="hidden"
+								name="${_csrf.parameterName}" value="${_csrf.token}" /> <input
+								type="hidden" name="usuario" value="${usuario.id}" />
+
+							<div class="modal-footer">
+								<button class="btn btn-default" data-dismiss="modal">Fechar</button>
+								<input type="submit" class="btn btn-primary" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>

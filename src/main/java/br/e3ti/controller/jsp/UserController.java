@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.e3ti.model.User;
+import br.e3ti.repository.AtividadeRepository;
+import br.e3ti.repository.RoleRepository;
 import br.e3ti.repository.UserRepository;
 
 @Controller
@@ -22,12 +24,19 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private AtividadeRepository atividadeRepository;
+	
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@RequestMapping
 	public String listaUsuarios(Model model, Principal principal){
 		model.addAttribute("usuarios", userRepository.findAll());
+		model.addAttribute("roles", roleRepository.findAll());
 		return "pages/usuario/lista";
 	}
 	
@@ -52,6 +61,8 @@ public class UserController {
 	@RequestMapping("{id}")
 	public String retornaUsuarioPorId(Model model, @PathVariable(value="id") Long id){
 		model.addAttribute("usuario", userRepository.findById(id));
+		model.addAttribute("roles", roleRepository.findAll());
+		model.addAttribute("atividades", atividadeRepository.findAll());
 		return "pages/usuario/editar";
 	}
 
