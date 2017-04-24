@@ -30,14 +30,14 @@ public class RoleController {
 	@RequestMapping(value={"salvar","editar"}, method=RequestMethod.POST)
 	public String salvar( Role role){	
         roleRepository.save(role);
-		return "redirect:/regra/lista";
+		return "redirect:/regra";
 	}
 	
 	@RequestMapping("excluir")
 	public String excluir(Role role, HttpServletResponse response){
 		roleRepository.delete(role.getId());
 		response.setStatus(200);
-		return "redirect:/regra/lista";
+		return "redirect:/regra";
 	}
 	
 	@RequestMapping("{id}")
