@@ -44,7 +44,8 @@
 					</div>
 				</div>
 			</div>
-			<button class="btn btn-default btn-sm" type="submit">Nova
+			<button class="btn btn-default btn-sm" data-toggle="modal"
+			data-target="#novaRegra" type="submit">Nova
 				Regra</button>
 		</div>
 
@@ -68,11 +69,43 @@
 								</c:if>
 							</c:forEach>
 						</ul></td>
-					<td><a href="#" onclick="excluirUsuario(${regra.id});">Excluir</a></td>
+					<td><a href="#" onclick="excluirRegra(${regra.id});">Excluir</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
+	
+	<div class="modal fade" id="novaRegra" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Novo Usuário</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<form id="formUsurLogado" action="/regra/editar" method="POST"
+						class="form-signin">
+						<span>${message}</span> <input name="name" type="text"
+							class="form-control form-group" placeholder="Nome"
+							autofocus="true" />
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+						<div class="modal-footer">
+							<button class="btn btn-default" data-dismiss="modal">Fechar</button>
+							<input type="submit" class="btn btn-primary" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
 	<!-- /container -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

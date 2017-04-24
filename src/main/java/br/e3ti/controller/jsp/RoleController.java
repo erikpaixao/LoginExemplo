@@ -30,20 +30,20 @@ public class RoleController {
 	@RequestMapping(value={"salvar","editar"}, method=RequestMethod.POST)
 	public String salvar( Role role){	
         roleRepository.save(role);
-		return "redirect:/lista";
+		return "redirect:/regra/lista";
 	}
 	
 	@RequestMapping("excluir")
 	public String excluir(Role role, HttpServletResponse response){
 		roleRepository.delete(role.getId());
 		response.setStatus(200);
-		return "redirect:/lista";
+		return "redirect:/regra/lista";
 	}
 	
 	@RequestMapping("{id}")
 	public String retornaregraPorId(Model model, @PathVariable(value="id") Long id){
 		model.addAttribute("regra", roleRepository.findById(id));
-		return "pages/regra/lista";
+		return "pages/regra/editar";
 	}
 
 }
